@@ -79,7 +79,7 @@ plugins:
 # Site navigation
 
 nav:
-    - Home: intro.md
+    - Home: index.md
     - Foundation: diyfoundation/diyfoundation.md
     - Prism Central Deployment: prism_central_deploy/prism_central_deploy.md
     - X-Ray: xray/xray.md
