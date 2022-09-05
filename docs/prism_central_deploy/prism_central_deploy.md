@@ -15,7 +15,7 @@ This lab will introduce Prism Central's(PC) One-Click deploy process
         The Primary network is for PC and other VMs deployment, the Secondary network is requried in X-Ray lab
 
 
-Open ``https://POCxx-ABC Cluster IP*:9440`` (https://10.42.xx.37:9440)
+Open ``https://POCxx-ABC Cluster IP:9440`` (https://10.42.xx.37:9440)
 in your browser and log in with the following credentials:
 
 -  **Username** - admin
