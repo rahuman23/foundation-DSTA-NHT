@@ -36,7 +36,7 @@ your assigned block using the following credentials:
 -   **Password** - *check password in RX*
 
 ```bash title="Login to the console of  NodeD CVM"
-ssh nutanix@10.42.xx.32         # password: <check password in RX>
+ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
 ```
 
 Execute the following commands to power off any running VMs on the
@@ -93,7 +93,7 @@ formation script in the next section.
 1.  Remaining in SSH client, access Node-D CVM and execute following commands
 
     ```bash title="Login to the console of Node D CVM"
-    ssh nutanix@10.42.xx.32           # password: <check password in RX>
+    ssh -l nutanix 10.42.xx.32           # password: <check password in RX>
     ```
 
 2.  Confirm if your hardware nodes have 1 or more SSD. 2 SSDs are
