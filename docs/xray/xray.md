@@ -20,13 +20,13 @@ Configuration networking, where the VMs communicate via self-assigned IPv4 addre
 1.  Open a terminal and SSH to Node-D CVM, enter CVM credentials and execute following commands
 
     ```bash title="Logon to SSH console of CVM"
-    ssh nutanix@10.42.xx.32   #<check password in RX>
+    ssh -l nutanix 10.42.xx.32   #<check password in RX>
     ```
 
 2. Upload the X-Ray Image
 
     ```bash
-    acli image.create X-Ray container=Images image_type=kDiskImage source_url=http://10.42.194.11/images/Xray/4.1.3/xray-4.1.3.qcow2
+    cvm:~$ acli image.create X-Ray container=Images image_type=kDiskImage source_url=http://10.42.194.11/images/Xray/4.1.3/xray-4.1.3.qcow2
     ```
     !!!caution
           Wait until you see that the image upload is complete with a message ``X-Ray: Complete``
@@ -34,7 +34,7 @@ Configuration networking, where the VMs communicate via self-assigned IPv4 addre
 2.  You can confirm presence of X-Ray image by running the following command in the same shell
 
     ```bash
-    nutanix@10.42.79.32:~$ acli image.list
+    cvm:~$ acli image.list
     ```
     ``` { .text .no-copy }
     # Output here
