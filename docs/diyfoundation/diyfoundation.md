@@ -14,7 +14,8 @@ self-contained, you will create a single node cluster on which you
 will deploy your Foundation VM. That Foundation instance will be used to
 image and create a cluster from the remaining 3 nodes in the Block.
 
--   In following steps, you may replace xx with your assigned cluster ID
+!!!caution
+          In following steps, you should replace xx part of the IP octet with your assigned cluster ID
 
 ## DIY Environment
 
@@ -29,61 +30,66 @@ you will:
 -   Use Foundation VM to image Nodes A, B, and C and create a 3 node
     cluster
 
-Using an SSH client, connect to the **Node D CVM IP** ``10.42.xx.32`` in
-your assigned block using the following credentials:
+1.  Using an SSH client, connect to the **Node D CVM IP** ``10.42.xx.32`` in your assigned block using the following credentials:
 
--   **Username** - nutanix
--   **Password** - *check password in RX*
+    -   **Username** - nutanix
+    -   **Password** - *check password in RX*
 
-```bash title="Login to the console of  NodeD CVM"
-ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
-```
+    ```bash title="Login to the console of  NodeD CVM"
+    ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
+    ```
 
-Execute the following commands to power off any running VMs on the
+    Execute the following commands to power off any running VMs on the
 cluster, stop cluster services, and destroy the existing cluster:
 
-```bash
-cluster stop        # Enter 'I agree' when prompted to proceed
-```
-```bash
-cluster destroy     # Enter 'Y' when prompted to proceed
-```
+    ```bash
+    cluster stop        # Enter 'I agree' when prompted to proceed
+    ```
+    ```bash
+    cluster destroy     # Enter 'Y' when prompted to proceed
+    ```
+## Confirm the Number of SSDs
 
-### Confirm the Number of SSDs
+In this section we will confirm the number of SSDs in your node D. This will determine which command we will use in the next section.
 
-Confirm the number of SSD in your node D. This will determine which command we will use in the next section.
+It is likely that all nodes in HPOC cluster will have similar SSD and HDD combination.
 
-It is likely that all nodes in HPOC cluster will have similar SSD and
-HDD combination.
+1. Login to any CVM to find out the SSD configuration details
 
-``` bash
-lsscsi 
+    ```bash title="Login to the console of  NodeD CVM"
+        ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
+    ```
 
- # Example output here
- [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
- [0:0:1:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sdb  # << SSD 2
- [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
- [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
- [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
- [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
- [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
+    ``` bash
+    lsscsi 
+    ```
+    ``` bash
+    # Example output here
+    [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
+    [0:0:1:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sdb  # << SSD 2
+    [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
+    [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
+    [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
+    [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
+    [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
 
- # this output shows that your node D has 2 SSDs 
-```
+    # this output shows that your node D has 2 SSDs 
+    ```
 
-``` bash
-lsscsi 
+    ``` bash
+    lsscsi
+    ```
+    ``` bash
+    # Example output here
+    [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
+    [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
+    [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
+    [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
+    [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
+    [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
 
- # Example output here
- [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
- [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
- [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
- [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
- [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
- [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
-
- # this output shows that your node D has 1 SSD
-```
+    # this output shows that your node D has 1 SSD
+    ```
 
 After confirming the number of SSDs choose the appropriate cluster
 formation script in the next section.
@@ -93,28 +99,24 @@ formation script in the next section.
 1.  Remaining in SSH client, access Node-D CVM and execute following commands
 
     ```bash title="Login to the console of Node D CVM"
-    ssh -l nutanix 10.42.xx.32           # password: <check password in RX>
+    ssh -l nutanix 10.42.xx.32 # password: <check password in RX>
     ```
 
-2.  Confirm if your hardware nodes have 1 or more SSD. 2 SSDs are
-    required to privide RF2 redundancy factor in a Nutanix cluster.
+2.  Confirm if your hardware nodes have 1 or more SSD. 2 SSDs are required to privide RF2 redundancy factor in a Nutanix cluster.
 
-    For the purpose of our lab, since we are creating 1 node cluster, we
-    are good to have RF1 as a redundancy factor.
+    For the purpose of our lab, since we are creating 1 node cluster, we are good to have RF1 as a redundancy factor.
 
-    If there **2 or more SSDs** on your nodes, use this command to
-    create a 1 node cluster
+    === "1 SSD Node"
 
-    ``` bash
-    cluster -s 10.42.xx.32 create       # Enter 'Y' when prompted to proceed
-    ```
+        ```bash
+        cluster -s 10.42.xx.32 --redundancy_factor=1 create # Enter 'Y' when prompted to proceed
+        ```
 
-3.  If there is **only 1 SSD** in your nodes, use this command to create
-    a 1 node cluster
+    === "2 SSDs Node"
 
-    ``` bash
-    cluster -s 10.42.xx.32 --redundancy_factor=1 create      # Enter 'Y' when prompted to proceed
-    ```
+        ```bash
+        cluster -s 10.42.xx.32 create # Enter 'Y' when prompted to proceed
+        ```
 
 4.  After the single node cluster is formed, run the following commands
     to configure it
@@ -140,7 +142,7 @@ formation script in the next section.
 
 ## Install Foundation VM
 
-1.  Open ``https://<Node D CVM IP:9440 `` (https://10.42.xx.32:9440) in your browser and log in with the following credentials:
+1.  Open ``https://<Node D CVM IP:9440`` (https://10.42.xx.32:9440) in your browser and log in with the following credentials:
 
     -   **Username** - admin
     -   **Password** - check password in RX
@@ -245,7 +247,7 @@ formation script in the next section.
 
 By default, Foundation does not have any AOS or hypervisor images. You can download your desired AOS package from the [Nutanix Portal](https://portal.nutanix.com/#/page/releases/nosDetails).
 
-If downloading the AOS package within the Foundation VM, the ``.tar.gz`` package can also be moved to \~/foundation/nos rather than uploaded to Foundation through the web UI.
+If downloading the AOS package within the Foundation VM, the ``.tar.gz`` package can also be moved to ``~/foundation/nos`` rather than uploaded to Foundation through the web UI.
 
 To shorten the lab time, we use command line to access foundation VM and download NOS binary to designated folder in it.
 
@@ -262,7 +264,8 @@ To shorten the lab time, we use command line to access foundation VM and downloa
     curl -O http://10.42.194.11/images/AOS/5.20.3/nutanix_installer_package-release-euphrates-5.20.3-stable-x86_64.tar
     ```
 
-    When you see 100% finish, AOS 5.20.3 package has been downloaded to ``~/foundation/nos`` folder.
+    !!!Alert
+           When you see 100% finished status, AOS 5.20.3 package has been downloaded to ``~/foundation/nos`` folder.
 
 2.  From you desktop computer, open Google Chrome browser and navigate to Foundation VM's IP
 
@@ -314,11 +317,14 @@ To shorten the lab time, we use command line to access foundation VM and downloa
            
            ``` bash
            ssh -l root <IP address of Host/Hypervisor>
+           ```
 
-           root@POC79-A ~# ipmitool lan print | grep "MAC Address" 
+           ``` bash
+           ipmitool lan print | grep "MAC Address" 
+           ```
+           ```bash
            # output here 
            MAC Address             : 0c:c4:7a:3c:c9:ad
-
            # repeat for nodes B and C for unique IPMI MAC addresses
            ```
 
@@ -378,7 +384,6 @@ To shorten the lab time, we use command line to access foundation VM and downloa
     !!!tip
           Every AOS release contains a version of AHV bundle with that release.
     
-
 18. Click **Next**
 
 19. Enter the existing IPMI credentials as **ADMIN** and **ADMIN** for all three nodes. Note that this will be different in the field.
@@ -408,7 +413,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
     ![image](images/image023.png)
 
 25. Once Foundation finishes successully, either click on **Click here**
-    link as shown above or open ``https://*<Cluster Virtual IP >*:9440`` (10.42.xx.37)in your browser
+    link as shown above or open ``https://<Cluster Virtual IP>:9440`` (10.42.xx.37)in your browser
 
 26. Log in with the following credentials:
 
