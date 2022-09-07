@@ -54,7 +54,7 @@ In this section we will confirm the number of SSDs in your node D. This will det
 
 It is likely that all nodes in HPOC cluster will have similar SSD and HDD combination.
 
-1. Login to any CVM to find out the SSD configuration details
+1. Login to the CVM to find out the SSD configuration details
 
     ```bash title="Login to the console of  NodeD CVM"
         ssh -l nutanix 10.42.xx.32         # password: <check password in RX>

@@ -13,8 +13,7 @@ As X-Ray powers down hosts for tests that evaluate availability and data ntegrit
 
 In this lab, we will deploy X-Ray VM on POCxx-D, and evalutate cluster *POCxx-ABC* we just created.
 
-For environments where DHCP is unavailable (or there isn't a sufficiently large pool of addresses available), X-Ray supports [Link-local](https://en.wikipedia.org/wiki/Link-local_address) or Zero
-Configuration networking, where the VMs communicate via self-assigned IPv4 addresses. In order to work, all of the VMs (including the X-Ray VM) need to reside on the same Layer 2 network. To use Link-local networking, your X-Ray VM's first NIC (eth0) should be on a network capable of communicating with your cluster. A second NIC (eth1) is added on a network without DHCP.
+For environments where DHCP is unavailable (or there isn't a sufficiently large pool of addresses available), X-Ray supports [Link-local](https://en.wikipedia.org/wiki/Link-local_address) or Zero Configuration networking, where the VMs communicate via self-assigned IPv4 addresses. In order to work, all of the VMs (including the X-Ray VM) need to reside on the same Layer 2 network. To use Link-local networking, your X-Ray VM's first NIC (eth0) should be on a network capable of communicating with your cluster. A second NIC (eth1) is added on a network without DHCP.
 ## Create the X-Ray VM image
 
 1.  Open a terminal and SSH to Node-D CVM, enter CVM credentials and execute following commands
