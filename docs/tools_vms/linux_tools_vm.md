@@ -10,94 +10,85 @@ multiple lab exercises.
 Deploy this VM on your assigned cluster if directed to do so as part of
 **Lab Setup**.
 
-```{=html}
-<strong><font color="red">Only deploy the VM once, it does not need to be cleaned up as part of any lab completion.</font></strong>
-```
+!!!caution
+        Only deploy the VM once, it does not need to be cleaned up as part of any lab completion    
+
 # Deploying CentOS
 
-In **Prism Central** \> select `bars`{.interpreted-text role="fa"} **\>
-Virtual Infrastructure \> VMs**, and click **Create VM**.
+1. In **Prism Central** > select **Menu**> **Compute and Storage** and **VMs**.
 
-Fill out the following fields:
+2. Click on **Create VM**
 
--   **Name** - *Initials*-Linux-ToolsVM
+3. Fill out the following fields:
 
--   **Description** - (Optional) Description for your VM.
+    -   **Name** - *Initials*-Linux-ToolsVM
 
--   **vCPU(s)** - 1
+    -   **Description** - (Optional) Description for your VM.
 
--   **Number of Cores per vCPU** - 2
+    -   **vCPU(s)** - 2
 
--   **Memory** - 2 GiB
+    -   **Number of Cores per vCPU** - 1
 
--   
+    -   **Memory** - 4 GiB
 
-    Select **+ Add New Disk**
+    -   Select **Attach Disk**
 
-    :   -   **Type** - DISK
-        -   **Operation** - Clone from Image Service
+        -   **Type** - DISK
+        -   **Operation** - Clone from Image
         -   **Image** - CentOS7.qcow2
-        -   Select **Add**
+        -   Select **Save**
 
--   
+4.   Select **Attach to Subnet**
 
-    Select **Add New NIC**
+    -   **VLAN Name** - Primary
+    -   Select **Save**
 
-    :   -   **VLAN Name** - Secondary
-        -   Select **Add**
+5. Click **Next** and **Create VM** to create the VM.
 
-Click **Save** to create the VM.
+6. In the list of VMs, select *Initials*-Linux-ToolsVM 
 
-Power On the VM.
+7. From the **Actions** menu, choose **Power On**.
 
 # Installing Tools
 
-Login to the VM via ssh or Console session, using the following
+1. Login to the VM via ssh or Console session, using the following
 credentials:
 
--   **Username** - root
--   **password** - nutanix/4u
+2.  Install the software needed by running the following commands:
 
-Install the software needed by running the following commands:
+    ```bash
+    yum update -y
+    yum install -y ntp ntpdate unzip stress nodejs python-pip s3cmd awscli
+    yum install -y bind-utils nmap wget git
+    npm install -g request
+    npm install -g express
+    ```
 
-``` bash
-yum update -y
-yum install -y ntp ntpdate unzip stress nodejs python-pip s3cmd awscli
-npm install -g request
-npm install -g express
-```
+3. Enable and configure NTP by running the following commands:
 
-## Configuring NTP
+    ``` bash
+    systemctl start ntpd
+    systemctl enable ntpd
+    ntpdate -u -s 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
+    systemctl restart ntpd
+    ```
 
-Enable and configure NTP by running the following commands:
+4. Disable the firewall and SELinux by running the following commands:
 
-``` bash
-systemctl start ntpd
-systemctl enable ntpd
-ntpdate -u -s 0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org
-systemctl restart ntpd
-```
+    ``` bash
+    systemctl disable firewalld
+    systemctl stop firewalld
+    setenforce 0
+    sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
+    ```
 
-## Disabling Firewall and SELinux
+5. Install Python by running the following commands:
 
-Disable the firewall and SELinux by running the following commands:
-
-``` bash
-systemctl disable firewalld
-systemctl stop firewalld
-setenforce 0
-sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
-```
-
-## Installing Python
-
-If completing the `apis`{.interpreted-text role="ref"} lab using the
-Linux Tools VM, install Python by running the following commands:
-
-``` bash
-yum -y install python36
-python3.6 -m ensurepip
-yum -y install python36-setuptools
-pip install -U pip
-pip install boto3
-```
+    ``` bash
+    yum -y install python36
+    python3.6 -m ensurepip
+    yum -y install python36-setuptools
+    pip install -U pip
+    pip install boto3
+    ```
+Now your Linux Tools VM is ready for you to use.
