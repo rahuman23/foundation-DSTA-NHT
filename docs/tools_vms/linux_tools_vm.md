@@ -2,7 +2,7 @@
 title: Linux Tools VM
 ---
 
-# Overview
+## Overview
 
 This CentOS VM image will be staged with packages used to support
 multiple lab exercises.
@@ -13,7 +13,7 @@ Deploy this VM on your assigned cluster if directed to do so as part of
 !!!caution
         Only deploy the VM once, it does not need to be cleaned up as part of any lab completion    
 
-# Deploying CentOS
+## Deploying CentOS
 
 1. In **Prism Central** > select **Menu**> **Compute and Storage** and **VMs**.
 
@@ -49,7 +49,7 @@ Deploy this VM on your assigned cluster if directed to do so as part of
 
 7. From the **Actions** menu, choose **Power On**.
 
-# Installing Tools
+## Installing Linux Tools
 
 1. Login to the VM via ssh or Console session, using the following
 credentials:
@@ -82,7 +82,7 @@ credentials:
     sed -i 's/enforcing/disabled/g' /etc/selinux/config /etc/selinux/config
     ```
 
-5. Install Python by running the following commands:
+5. Optional step - Install Python by running the following commands:
 
     ``` bash
     yum -y install python36
