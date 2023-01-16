@@ -58,13 +58,12 @@ It is likely that all nodes in HPOC cluster will have similar SSD and HDD combin
 1. Login to the CVM to find out the SSD configuration details
 
     ```bash title="Login to the console of  NodeD CVM"
-        ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
+    ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
     ```
-
     ``` bash
     lsscsi 
     ```
-    ``` bash
+    ``` { .text .no-copy }
     # Example output here
     [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
     [0:0:1:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sdb  # << SSD 2
