@@ -13,7 +13,7 @@ do so as staging for another lab.**
 
 # Enabling App Management
 
-Open https://*\<Prism-Central-IP\>*:9440/ in a browser and log in.
+Open https://*<Prism-Central-IP\>*:9440/ in a browser and log in.
 
 From the navigation bar, select **Service \> Calm**
 
@@ -58,7 +58,7 @@ consume** - Nutanix - **AHV Cluster** - *\<POCxx-ABC\>* - Under
 **Network**, select the **Primary** and if available, the **Secondary**
 networks.
 
-Select `star`{.interpreted-text role="fa"} for the **Primary** network
+Select `star` for the **Primary** network
 to make it the default virtual network for VMs in the **default**
 project.
 
@@ -68,8 +68,7 @@ Click **Save**.
 
 # Verifying the Default Project
 
-In **Prism Central**, select `bars`{.interpreted-text role="fa"} **\>
-Services \> Calm**.
+In **Prism Central**, select **Menu > Services > Calm**.
 
 ![](images/0.png)
 

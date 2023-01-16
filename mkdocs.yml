@@ -10,6 +10,7 @@ repo_url: https://github.com/nutanix-japan/nhtd1_material
 # Copyright
 copyright: Copyright &copy; 2016 - 2022 Nutanix Enablement Practice
 
+
 # Configuration
 
 theme:
@@ -76,13 +77,13 @@ plugins:
     - search
 
 # Style sheeting here
-# extra_css:
-#   - stylesheets/extra.css
+extra_css:
+  - stylesheets/extra.css
 
 # Site navigation
 
 nav:
     - Home: index.md
     - Foundation: diyfoundation/diyfoundation.md
-    - Prism Central Deployment: prism_central_deploy/prism_central_deploy.md
+    - Prism Central Deployment: pcdeploy/pcdeploy.md
     - X-Ray: xray/xray.md
