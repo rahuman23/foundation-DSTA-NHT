@@ -4,7 +4,7 @@ title: X-Ray
 
 # Overview
 
-!!!note
+!!!info
        Estimated time to complete: **60 Minutes**
 
 X-Ray is an automated testing application for virtualized infrastructure solutions. It is capable of running test scenarios end-to-end to evaluate system attributes in real-world use cases. In this exercise you will deploy and configure an X-Ray VM, run X-Ray tests, and analyze results.

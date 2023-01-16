@@ -4,7 +4,7 @@ title: Foundation
 
 # Overview
 
-!!!note
+!!!info
         Estimated time to complete: **60 Minutes**
 
 Foundation is used to automate the installation of the hypervisor and
