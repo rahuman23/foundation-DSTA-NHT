@@ -76,9 +76,9 @@ markdown_extensions:
 plugins:
     - search
 
-# Style sheeting here
-extra_css:
-  - stylesheets/extra.css
+# # Style sheeting here
+# extra_css:
+#   - stylesheets/extra.css
 
 # Site navigation
 
