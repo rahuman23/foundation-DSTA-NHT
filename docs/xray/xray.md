@@ -286,10 +286,10 @@ resulting in a much faster time to complete ingesting the 1TB of data.
     for summarizing POC results.
 
     !!!question 
-            Can you explain **why** the Nutanix solution may produce better results than common HCI competitors?
+               Can you explain **why** the Nutanix solution may produce better results than common HCI competitors?
 
     !!!tip 
-        Check out the [OpLog](http://nutanixbible.com/\#anchor-i/o-path-and-cache-67) section of the Nutanix Bible
+          Check out the [OpLog](https://www.nutanixbible.com/4c-book-of-aos-dsf.html#oplog) section of the Nutanix Bible
         
 ## Takeaways
 
