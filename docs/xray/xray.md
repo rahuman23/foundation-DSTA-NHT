@@ -99,7 +99,7 @@ Now we switch to Prism portal of single node cluster D
 
 ## Configuring X-Ray
 
-1.  Open ``https://X-RAY-VM-IP`` (<https://10.42.xx.52>) in a browser
+1.  Open ``https://X-RAY-VM-IP`` (E.g: https://10.42.xx.52) in a browser
 
 2.  Click on Log in with Local Account
 
