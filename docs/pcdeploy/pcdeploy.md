@@ -126,7 +126,7 @@ in your browser and log in with the following credentials:
    
     ![](images/7.png)
 
-    You will see an **OK** with PC\'s IP in Prism Central widget.
+    You will see an **OK** with PC's IP in Prism Central widget.
    
     ![](images/8.png)
 

@@ -173,7 +173,7 @@ While X-Ray offers many testing options, we will use **Peak Performance Microben
 
 3.  Review the test description
 
-4.  Enter the test name as **\<Your Initials\> - Peak Perforamce Test**
+4.  Enter the test name as **Your Initials - Peak Perforamce Test**
 
 5.  Confirm your **POCxx-ABC** as the right target
 

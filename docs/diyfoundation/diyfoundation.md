@@ -238,7 +238,7 @@ formation script in the next section.
     ![](images/foundation-vm-ip.png)
 
     !!!caution
-              The IP address is received from the Primary network default DHCP pool. Your Foundation VM\'s IP address will be different.
+              The IP address is received from the Primary network default DHCP pool. Your Foundation VM's IP address will be different.
     
 ## Foundation Node ABC cluster
 
@@ -278,7 +278,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
     -   **Gateway of Every Host and CVM** - 10.42.xx.1
     -   **Gateway of Every IPMI** - 10.42.xx.1
     -   **Netmask of Every IPMI** - 255.255.255.128
-    -   Under **Double-check this installer\'s networking step**
+    -   Under **Double-check this installer's networking step**
     -   **Skip this Validation** - selected
 
     ![image](images/image014.png)
@@ -343,7 +343,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 12. Replacing the octet(s) that correspond to your HPOC network, fill out the **top row** fields with the following details:
 
     -   **IPMI MAC** - the three your just recorded down
-    -   **IPMI IP** - 10.42.xx.33
+    -   **IPMI IP** - 10.42.xx.
     -   **Hypervisor IP** - 10.42.xx.25
     -   **CVM IP** - 10.42.xx.29
     -   **HOSTNAME OF HOST** -- POCxx-A
@@ -368,7 +368,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 
     -   **Select an AOS installer** - Select your uploaded (through
         command line in previous steps)
-        *nutanix_installer_package-release-\*.tar.gz* file
+        *nutanix_installer_package-release-*.tar.gz* file
     -   **Arguments to the AOS Installer (Optional)** - leave blank
 
     ![image](images/image106.png)
