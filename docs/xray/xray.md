@@ -98,14 +98,17 @@ Now we switch to Prism portal of single node cluster D
 ## Configuring X-Ray
 
 1.  Open ``https://X-RAY-VM-IP`` (E.g: https://10.42.xx.52) in a browser
+    
+    !!!caution
+       Make sure to use the IP that you noted down from the previous section
 
-2.  Click on Log in with Local Account
+3.  Click on Log in with Local Account
 
     ![](images/7.png)
 
-3.  Click on **Sign up now** in the bottom of the screen
+4.  Click on **Sign up now** in the bottom of the screen
 
-4.  Provide the following details
+5.  Provide the following details
 
     -   **Email** - <youremail@nutanix.com>
     -   **Password** - set it to cluster password
