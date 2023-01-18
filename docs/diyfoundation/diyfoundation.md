@@ -254,7 +254,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 1.  Open a terminal in your desktop computer (Putty or Mac Terminal) and ssh to **Foundation VM** through foundation IP ``10.42.xx.45``
 
     ```bash title="Login to the console of Foundation VM"
-    ssh -l nutanix <Foundation VM IP>  # provide default password 
+    ssh -l nutanix <Foundation VM IP>  # use default password - ask instructor if you are unaware
     # example
     # ssh -l nutanix 10.42.xx.51     
     ```
@@ -313,7 +313,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 
            Method.1: Identify IPMI MAC Address (BMC MAC address) of Nodes (A, B, and C) by accessing IPMI IP in a browser for each node 
            
-           Method.2 Identify IPMI MAC Address of Nodes (A, B, C) by login AHV host with User: root, Password: *default* for each node and using the following commands: 
+           Method.2 Identify IPMI MAC Address of Nodes (A, B, C) by logging to the AHV hosts with User: root, Password: *default* for each node and using the following commands: 
            
            ``` bash
            ssh -l root <IP address of Host/Hypervisor>
