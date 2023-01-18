@@ -93,7 +93,7 @@ Now we switch to Prism portal of single node cluster D
 6.  Determine the IP address of the NIC (eth0) on the **Primary** network of the X-Ray VM from Prism Element and note it down
 
 !!!note
-       It is critical that you select the IP address of the network adapter assigned to the **Primary** network (you can confirm by comparing the MAC address in the VM console to the MAC address shown in Prism). We will use this network to assign a static IP to the X-Ray VM to access the web interface.
+       It is critical that you select the IP address of the network adapter assigned to the **Primary** network (you can confirm by comparing the MAC address in the VM console to the MAC address shown in Prism). 
 
        We will **NOT** assign an address to the **Secondary** network adapter. This network will be used for zero configuration communication between the X-Ray VM and client VMs. This approach is helpful when DHCP isn't available or the DHCP scope isn't large enough to support X-Ray testing.
 
