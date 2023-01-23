@@ -418,15 +418,19 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 26. Log in with the following credentials:
 
     -   **Username** - admin
-    -   **Password** - *default*
-    -   **Change the Password** - *check password in RX*
+    -   **Change the Password** - *use the same password in RX*
+
+27. Once the password is changed, you can login to Prism Element
 
     ![image](images/image024.png)
 
 ## Takeaways
 
 - You have successfully prepared your environment in a single operation called Foundation:
-  - Installed Hypervisor (AHV) - This can also be ESXi or Hyper V
+- 
+  - Installed Hypervisor (AHV) - This can also be ESXi or Hyper-V
   - Installed CVM (AOS)
     - Distributed File System (Data Plane)
     - Prism Element (Control Plane) 
+
+Now we will proceed to install Prism Central(PC).  PC can manage several Prism Elements akin to cloud managers provided by public cloud providers. 
