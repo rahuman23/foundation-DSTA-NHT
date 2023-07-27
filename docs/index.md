@@ -2,7 +2,7 @@
 
 # Getting Started 
 
-Welcome to NHT Labs.
+Welcome to DSO Foundation Training Labs.
 
 !!!info
        Estimated time to complete the labs is as follows:
