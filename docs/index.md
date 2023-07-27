@@ -184,5 +184,5 @@ RTP Based Clusters:
 
 !!! note
 
-- ```https://nutanixinc-my.sharepoint.com/:x:/g/personal/rahuman_pichai_nutanix_com/EaNgeE7S6H9Gj7BAoVzvuVEB5NnA5oT2tC_-WM2yn1L1TA?e=NJEROt
+    - ```https://nutanixinc-my.sharepoint.com/:x:/g/personal/rahuman_pichai_nutanix_com/EaNgeE7S6H9Gj7BAoVzvuVEB5NnA5oT2tC_-WM2yn1L1TA?e=NJEROt
 
