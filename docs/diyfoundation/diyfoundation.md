@@ -17,255 +17,41 @@ image and create a cluster from the remaining 3 nodes in the Block.
 !!!caution
           In following steps, you should replace xx part of the IP octet with your assigned cluster ID
 
-## DIY Environment
+ 
+## Please find the below table for your Foundation VM IP
+
+Please open up a browser and enter the IP address of the foundation IP address. This will bring you foundation VM page. Step 1 has been done for you to save time of uploading the image. Please proceed with Step 3! 
+
+| Name                  | Foundation VM IP |
+| --------------------- | ---------------- |
+| Pern Ren              | 10.38.15.211     |
+| Whai Chun Kit         |                  |
+| Koh Yong Jun Rick     | 10.38.15.212     |
+| Pang Yoke Shim Jerome |                  |
+| Tay Yi Hang           | 10.38.15.213     |
+| Yip Mun Kit           |                  |
+| Ong Wu Loong Eric     | 10.38.15.214     |
+| Enkizen Wen Ming      |                  |
+| Yap Kian Wee Clarence | 10.38.15.215     |
+|                       |                  |
+| Lim Lui Siang Alex    | 10.38.15.216     |
+|                       |                  |
+| Tan Rong Tai Damien   | 10.38.15.217     |
+|                       |                  |
+| Chong Loo Tong Andrew | 10.38.15.218     |
+|                       |                  |
+| Hu Huini Joey         | 10.38.15.219     |
+|                       |                  |
+| Wong Teck Yuan Simon  | 10.38.15.220     |
+|                       |                  |
 
-A Hosted POC reservation provides a fully imaged cluster consisting of 4
-nodes. To keep the lab self-contained within a single, physical block,
-you will:
 
--   Destroy the existing cluster
--   Confirm the number of SSDs
--   Create a single node cluster using Node D
--   Install the Foundation VM on Node D
--   Use Foundation VM to image Nodes A, B, and C and create a 3 node
-    cluster
-
-1.  Using an SSH client, connect to the **Node D CVM IP** ``10.42.xx.32`` in your assigned block using the following credentials:
-
-    -   **Username** - nutanix
-    -   **Password** - *check password in RX*
-
-    ```bash title="Login to the console of  NodeD CVM"
-    ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
-    ```
-
-    Execute the following commands to power off any running VMs on the cluster, stop cluster services, and destroy the existing cluster:
-
-     ```bash
-     cluster stop        # Enter 'I agree' when prompted to proceed
-     ```
-     ```bash
-     cluster destroy     # Enter 'Y' when prompted to proceed
-     ```
-
-Once you have made sure that all VMs and services are stopped, you can proceed to the next steps. 
-## Confirm the Number of SSDs
-
-In this section we will confirm the number of SSDs in your node D. This will determine which command we will use in the next section.
-
-It is likely that all nodes in HPOC cluster will have similar SSD and HDD combination.
-
-1. Login to the CVM to find out the SSD configuration details
-
-    ```bash title="Login to the console of  NodeD CVM"
-    ssh -l nutanix 10.42.xx.32         # password: <check password in RX>
-    ```
-    ``` bash
-    lsscsi 
-    ```
-    ``` { .text .no-copy }
-    # Example output here
-    [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
-    [0:0:1:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sdb  # << SSD 2
-    [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
-    [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
-    [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
-    [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
-    [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
-
-    # this output shows that your node D has 2 SSDs 
-    ```
-
-    ``` bash
-    lsscsi
-    ```
-    ``` bash
-    # Example output here
-    [0:0:0:0]    disk    ATA      INTEL SSDSC2BX80 0140  /dev/sda  # << SSD 1
-    [0:0:2:0]    disk    ATA      ST91000640NS     SN03  /dev/sdc 
-    [0:0:3:0]    disk    ATA      ST91000640NS     SN03  /dev/sdd 
-    [0:0:4:0]    disk    ATA      ST91000640NS     SN03  /dev/sde 
-    [0:0:5:0]    disk    ATA      ST91000640NS     SN03  /dev/sdf 
-    [2:0:0:0]    cd/dvd  QEMU     QEMU DVD-ROM     2.5+  /dev/sr0
-
-    # this output shows that your node D has 1 SSD
-    ```
-
-After confirming the number of SSDs choose the appropriate cluster
-formation script in the next section.
-
-## Create Node D Cluster
-
-1.  Remaining in SSH client, access Node-D CVM and execute following commands
-
-    ```bash title="Login to the console of Node D CVM"
-    ssh -l nutanix 10.42.xx.32 # password: <check password in RX>
-    ```
-
-2.  Confirm if your hardware nodes have 1 or more SSD. 2 SSDs are required to privide RF2 redundancy factor in a Nutanix cluster.
-
-    For the purpose of our lab, since we are creating 1 node cluster, we are good to have RF1 as a redundancy factor.
-
-    === "1 SSD Node"
-
-        ```bash
-        cluster -s 10.42.xx.32 --redundancy_factor=1 create # Enter 'Y' when prompted to proceed
-        ```
-
-    === "2 SSDs Node"
-
-        ```bash
-        cluster -s 10.42.xx.32 create # Enter 'Y' when prompted to proceed
-        ```
-
-4.  After the single node cluster is formed, run the following commands
-    to configure it
-
-    !!!note
-           The above command will create a ``cluster`` from a single node using RF1, offering no redundancy to recover from hardware failure.
-
-           This configuration is being used for non-production, instructional purposes and should **NEVER** be used for a customer deployment (unless the hosted application stores two copies of the same data
-           e.g. Splunk). This should be agreed with the customer.
-
-           After the ``cluster`` is created, Prism will reflect Critical Health status due to lack of redundancy.
-
-
-    ``` bash
-    ncli cluster edit-params new-name=POCxx-D
-    ```
-    ``` bash
-    ncli cluster add-to-name-servers servers=10.42.196.10
-    ```
-    ``` bash
-    ncli user reset-password user-name='admin' password=<check password in RX> 
-    ```
-
-## Install Foundation VM
-
-1.  Open ``https://<Node D CVM IP:9440`` (https://10.42.xx.32:9440) in your browser and log in with the following credentials:
-
-    -   **Username** - admin
-    -   **Password** - check password in RX
-
-2.  Accept the EULA and Pulse prompts.
-
-3.  In **Prism > Storage > Table > Storage Pool**, select default storage pool and click update, then rename it to *SP01*
-
-4.  Check if there is a container named *Images*, if not, Click **+ Storage Container** to create a new container named *Images*
-
-    ![image](images/image001.png)
-
-5.  Go to configuration :fontawesome-solid-gear: (Settings) page and navigate to **Image Configuration**, click **+Upload Image**
-
-6.  Fill out the following fields and click **Save**:
-
-    -   **Name** - Foundation
-    -   **Image Type** - Disk
-    -   **Storage Container** Images
-    -   Select **From URL**
-    -   **Image Source** - ``http://10.42.194.11/images/Foundation/Foundation_VM-5.2-disk-0.qcow2``
-
-    !!!note
-           At the time of writing, Foundation 5.2 is the latest available version. The URL for the latest Foundation VM QCOW2 image can be downloaded from the [Nutanix Portal](https://portal.nutanix.com/#/page/foundation).
-
-           **Unless otherwise directed by support, always use the latest version of Foundation in a field installation.**
-           
-           For the puposes of this lab, the Foundation VM image is stored in a HPOC file server
-
-
-7.  Go to configuration page and navigate to **Network Config**
-
-8.  Before creating the VM, we must first create a virtual network to
-    assign to the Foundation VM. The network will use the Native VLAN
-    assigned to the physical uplinks for all 4 nodes in the block.
-
-9.  In the Prism Element UI click :fontawesome-solid-gear: > **Network Configuration > Networks > Create Network**
-
-10. Fill out the following fields:
-
-    -   **Name** - Primary
-    -   **VLAN ID** - 0
-    -   Enable IP address management - leave it unselected
-
-    ![](images/image002-network.png)
-
-11. Click on **Save**
-
-12. In **Prism > VM > Table** and click **+ Create VM**.
-
-13. Fill out the following fields
-
-    -   **Name** - Foundation
-    -   **vCPU(s)** - 2
-    -   **Number of Cores per vCPU** - 1
-    -   **Memory** - 8 Gi
-
-    ![image](images/image003.png)
-
-14. Select **+ Add New Disk**
-
-    -   **Operation** - Clone from Image Service
-    -   **Image** - Foundation
-    -   Select **Add**
-
-    ![image](images/image004.png)
-
-15. Select **Add New NIC**
-
-    -   **VLAN Name** - Primary
-    -   Select **Add**
-
-    ![image](images/image005-network-1.png)
-
-    Once NIC is added, you should see the NIC configuration in the VM
-    create window as shown here
-
-    ![image](images/image005-network-2.png)
-
-16. Click on **Save**
-
-## Config Foundation VM
-
-1.  Select your **Foundation** VM and click **Power on**.
-
-2.  Once the VM has started, click **Launch Console**.
-
-3.  Once the VM has finished booting, return to Prism element and note
-    down the IP address of the Foundation VM.
-
-4.  Prism Element > **VM** > **Table** > **Foundation VM** > **NICs**
-
-    ![](images/foundation-vm-ip.png)
-
-    !!!caution
-              The IP address is received from the Primary network default DHCP pool. Your Foundation VM's IP address will be different.
-    
 ## Foundation Node ABC cluster
 
 !!!note
        We will do this section of the lab from your desktop (Windows or Mac) computer. This is the fastest way as remote consoles will be slow.
 
 By default, Foundation does not have any AOS or hypervisor images. You can download your desired AOS package from the [Nutanix Portal](https://portal.nutanix.com/#/page/releases/nosDetails).
-
-If downloading the AOS package within the Foundation VM, the ``.tar.gz`` package can also be moved to ``~/foundation/nos`` rather than uploaded to Foundation through the web UI.
-
-To shorten the lab time, we use command line to access foundation VM and download NOS binary to designated folder in it.
-
-1.  Open a terminal in your desktop computer (Putty or Mac Terminal) and ssh to **Foundation VM** through foundation IP ``10.42.xx.45``
-
-    ```bash title="Login to the console of Foundation VM"
-    ssh -l nutanix <Foundation VM IP>  # use default password - ask instructor if you are unaware
-    # example
-    # ssh -l nutanix 10.42.xx.51     
-    ```
-    ```bash
-    cd foundation
-    cd nos
-    curl -O http://10.42.194.11/images/AOS/5.20.3/nutanix_installer_package-release-euphrates-5.20.3-stable-x86_64.tar
-    ```
-
-    !!!Alert
-           When you see 100% finished status, AOS 5.20.3 package has been downloaded to ``~/foundation/nos`` folder.
 
 2.  From you desktop computer, open Google Chrome browser and navigate to Foundation VM's IP
 
@@ -340,13 +126,36 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 
 11. Click **Tools** and select **Range Autofill** from the drop down list
 
-12. Replacing the octet(s) that correspond to your HPOC network, fill out the **top row** fields with the following details:
+12. Depending on which cluster you are using, Rahuman has being a nice guy has provided you with the range of IP address to fill in for all the nodes. Look for your cluster IPMI, HOST and CVM IP and fill up on your foundation page:
 
-    -   **IPMI MAC** - the three your just recorded down
-    -   **IPMI IP** - 10.42.xx.
-    -   **Hypervisor IP** - 10.42.xx.25
-    -   **CVM IP** - 10.42.xx.29
+
+    -   **IPMI IP** - 10.42 or 38.xx.33,34,35,36
+    -   **Hypervisor IP** - 10.42 or 38.xx.25,26,27,28
+    -   **CVM IP** - 10.42 or 38.xx.29,30,31,32
     -   **HOSTNAME OF HOST** -- POCxx-A
+
+| Name                  | Cluster Name | IPMI IP                                                      | HOST IP                                                      | CVM IP                                                       |
+| --------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Pern Ren              | PHX-POC102   | 10.42.102.33<br>10.42.102.34<br>10.42.102.35<br>10.42.102.36 | 10.42.102.25<br>10.42.102.26<br>10.42.102.27<br>10.42.102.28 | 10.42.102.29<br>10.42.102.30<br>10.42.102.31<br>10.42.102.32 |
+| Whai Chun Kit         |              |
+| Koh Yong Jun Rick     | PHX-POC183   | 10.38.183.33<br>10.38.183.34<br>10.38.183.35<br>10.38.183.36 | 10.38.183.25<br>10.38.183.26<br>10.38.183.27<br>10.38.183.28 | 10.38.183.29<br>10.38.183.30<br>10.38.183.31<br>10.38.183.32 |
+| Pang Yoke Shim Jerome |              |
+| Tay Yi Hang           | PHX-POC295   | 10.38.67.33<br>10.38.67.34<br>10.38.67.35<br>10.38.67.36     | 10.38.67.25<br>10.38.67.26<br>10.38.67.27<br>10.38.67.28     | 10.38.67.29<br>10.38.67.30<br>10.38.67.31<br>10.38.67.32     |
+| Yip Mun Kit           |              |
+| Ong Wu Loong Eric     | PHX-POC030   | 10.42.30.33<br>10.42.30.34<br>10.42.30.35<br>10.42.30.36     | 10.42.30.25<br>10.42.30.26<br>10.42.30.27<br>10.42.30.28     | 10.42.30.29<br>10.42.30.30<br>10.42.30.31<br>10.42.30.32     |
+| Enkizen Wen Ming      |              |
+| Yap Kian Wee Clarence | PHX-POC031   | 10.42.31.33<br>10.42.31.34<br>10.42.31.35<br>10.42.31.36     | 10.42.31.25<br>10.42.31.26<br>10.42.31.27<br>10.42.31.28     | 10.42.31.29<br>10.42.31.30<br>10.42.31.31<br>10.42.31.32     |
+|                       |              |
+| Lim Lui Siang Alex    | PHX-POC061   | 10.42.61.33<br>10.42.61.34<br>10.42.61.35<br>10.42.61.36     | 10.42.61.25<br>10.42.61.26<br>10.42.61.27<br>10.42.61.28     | 10.42.61.29<br>10.42.61.30<br>10.42.61.31<br>10.42.61.32     |
+|                       |              |
+| Tan Rong Tai Damien   | PHX-POC065   | 10.42.65.33<br>10.42.65.34<br>10.42.65.35<br>10.42.65.36     | 10.42.65.25<br>10.42.65.26<br>10.42.65.27<br>10.42.65.28     | 10.42.65.29<br>10.42.65.30<br>10.42.65.31<br>10.42.65.32     |
+|                       |              |
+| Chong Loo Tong Andrew | PHX-POC018   | 10.42.18.33<br>10.42.18.34<br>10.42.18.35<br>10.42.18.36     | 10.42.18.25<br>10.42.18.26<br>10.42.18.27<br>10.42.18.28     | 10.42.18.29<br>10.42.18.30<br>10.42.18.31<br>10.42.18.32     |
+|                       |              |
+| Hu Huini Joey         | PHX-POC020   | 10.42.20.33<br>10.42.20.34<br>10.42.20.35<br>10.42.20.36     | 10.42.20.25<br>10.42.20.26<br>10.42.20.27<br>10.42.20.28     | 10.42.20.29<br>10.42.20.30<br>10.42.20.31<br>10.42.20.32     |
+|                       |              |
+| Wong Teck Yuan Simon  | PHX-POC029   | 10.42.29.33<br>10.42.29.34<br>10.42.29.35<br>10.42.29.36     | 10.42.29.25<br>10.42.29.26<br>10.42.29.27<br>10.42.29.28     | 10.42.29.29<br>10.42.29.30<br>10.42.29.31<br>10.42.29.32     |
+|                       |              |
 
     ![image](images/image105.png)
 
@@ -366,8 +175,7 @@ To shorten the lab time, we use command line to access foundation VM and downloa
 
 15. Click **Next**
 
-    -   **Select an AOS installer** - Select your uploaded (through
-        command line in previous steps)
+    -   **Select an AOS installer** - Select your uploaded (simply use whatever that was uploaded for you)
         *nutanix_installer_package-release-*.tar.gz* file
     -   **Arguments to the AOS Installer (Optional)** - leave blank
 
