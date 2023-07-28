@@ -80,7 +80,7 @@ By default, Foundation does not have any AOS or hypervisor images. You can downl
 7.  Fill in block information, fill in the following information:
 
     -   **Number of blocks** - 1
-    -   **Number of nodes** - 3
+    -   **Number of nodes** - 4
     -   **How should these nodes be reached?** - choose **I will provide the IPMI's MACs**
 
 8.  Click **Add**
