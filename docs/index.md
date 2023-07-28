@@ -43,21 +43,21 @@ Please use the following username and password to login to the Frame VDI desktop
 | Koh Yong Jun Rick     | PHX-SPOC015-4-User03 | ntnx/4DSO         |
 | Pang Yoke Shim Jerome | PHX-SPOC015-4-User04 | ntnx/4DSO         |
 | Tay Yi Hang           | PHX-SPOC015-4-User05 | ntnx/4DSO         |
-| Yip Mun Kit           | PHX-SPOC015-4-User06 | ntnx/4DSO         |
+| Yip Mun Kit           | PHX-POC295-User01    | ntnx/4DSO         |
 | Ong Wu Loong Eric     | PHX-SPOC015-4-User07 | ntnx/4DSO         |
 | Enkizen Wen Ming      | PHX-SPOC015-4-User08 | ntnx/4DSO         |
 | Yap Kian Wee Clarence | PHX-SPOC015-4-User09 | ntnx/4DSO         |
 |                       | PHX-POC102-User01    | ntnx/4DSO         |
 | Lim Lui Siang Alex    | PHX-POC102-User02    | ntnx/4DSO         |
 |                       | PHX-POC102-User07    | ntnx/4DSO         |
-| Tan Rong Tai Damien   | PHX-POC102-User03    | ntnx/4DSO         |
-|                       | PHX-SPOC015-4-User14 | ntnx/4DSO         |
+| Tan Rong Tai Damien   | PHX-POC295-User02    | ntnx/4DSO         |
+|                       |                      | ntnx/4DSO         |
 | Chong Loo Tong Andrew | PHX-POC102-User04    | ntnx/4DSO         |
-|                       | PHX-SPOC015-4-User16 | ntnx/4DSO         |
+|                       |                      | ntnx/4DSO         |
 | Hu Huini Joey         | PHX-POC102-User05    | ntnx/4DSO         |
-|                       | PHX-SPOC015-4-User18 | ntnx/4DSO         |
+|                       |                      | ntnx/4DSO         |
 | Wong Teck Yuan Simon  | PHX-POC102-User06    | ntnx/4DSO         |
-|                       | PHX-SPOC015-4-User20 | ntnx/4DSO         |
+|                       |                      | ntnx/4DSO         |
 
 
 ## Environment Details
