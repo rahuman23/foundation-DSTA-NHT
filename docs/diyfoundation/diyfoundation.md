@@ -168,7 +168,7 @@ By default, Foundation does not have any AOS or hypervisor images. You can downl
     -   **Cluster Redundancy Factor** - RF2
     -   **Cluster Virtual IP** - 10.42.xx.37
     -   **NTP Servers of Every Hypervisor and CVM** - 0.pool.ntp.org,1.pool.ntp.org,2.pool.ntp.org,3.pool.ntp.org
-    -   **DNS Servers of Every Hypervisor and CVM** - 10.42.196.10
+    -   **DNS Servers of Every Hypervisor and CVM** - <refer to  table above> 
     -   **vRAM Allocation for Every CVM, in Gigabytes** - 32
 
     ![image](images/foundation-cluster-config.png)
