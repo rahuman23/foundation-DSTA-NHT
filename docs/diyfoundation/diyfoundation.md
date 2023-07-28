@@ -241,4 +241,11 @@ By default, Foundation does not have any AOS or hypervisor images. You can downl
     - Distributed File System (Data Plane)
     - Prism Element (Control Plane) 
 
+## Reset UI Login password
+
+ - Login to CVM via ssh (username: nutanix password: nutanix/4u)
+ - execute the following commands <ncli user reset-password user-name="admin" password=ntnx/4DSTA>
+
+    
+
 Now we will proceed to install Prism Central(PC).  PC can manage several Prism Elements akin to cloud managers provided by public cloud providers. 
