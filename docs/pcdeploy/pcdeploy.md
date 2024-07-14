@@ -58,8 +58,13 @@ in your browser and log in with the following credentials:
 
     ![](images/2.png)
 
-3.  Download the latest version and click **Deploy 1-VM PC**
-
+##3.  Download the latest version and click **Deploy 1-VM PC**
+3. From the Desktop, download the latest version of Prism Central from the below path:
+    -  \\nutanixdc.local\dfs\images\Rahuman_Veritas\PC\PC2024.1.0.1
+      - use your VDI credntials to access the file that is shared in the share
+      - Reference: https://help.oe.nutanix.com/hpoc/en/articles/8336861-internal-using-the-hpoc-file-service
+    - The tar file will need to be added to the cluster manually
+    -
     ![](images/3.png)
 
 4.  Fill out the following fields:
@@ -131,6 +136,20 @@ in your browser and log in with the following credentials:
     ![](images/8.png)
 
 You have successully registered Prism Element to be managed your Prism Central.
+
+6.  One you have completely registered, you can go into you Prism Central Management, enable Network Controller. This will enable VPC service for all cluster.
+
+    ![](images/12.jpeg)
+
+7.  This will enable the necessary services and complete the proccess.
+
+    ![](images/13.jpeg)
+
+    ![](images/14.jpeg)
+
+8.  You will see the service that has been enabled in the and completed in the cluster. 
+
+    ![](images/15.jpeg)
 
 !!!note
        Once the Prism Element registration is complete, several management features on Prism Element will be **Read-Only** mode but fully available in Prism Central.
