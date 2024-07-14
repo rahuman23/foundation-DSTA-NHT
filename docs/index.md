@@ -1,6 +1,6 @@
 
 
-# Getting Started 
+# Getting Started
 
 Welcome to DSO Foundation Training Labs.
 
@@ -34,7 +34,7 @@ Welcome to DSO Foundation Training Labs.
 Login to: <https://console.nutanix.com/x/labs>
 
 
-Please use the following username and password to login to the Frame VDI desktop. 
+Please use the following username and password to login to the Frame VDI desktop.
 
 | Name                  | Frame Account        | Frame Account Pwd |
 | --------------------- | -------------------- | ----------------- |
@@ -100,7 +100,7 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
 |Secondary        | 10.42.*XYZ*.129/25  | *XYZ1*  | 10.42.*XYZ*.132-10.42.*XYZ*.253|
 
 
-#### 3 Node Cluster HPOC
+#### 1 Node Cluster HPOC
 
 For some workshops we are using Single Node Clusters (SNC). The reason for this is to allow more people to have a dedicated cluster but still have enough free clusters for the bigger workshops including those for
 customers.
@@ -108,28 +108,33 @@ customers.
 The network in the SNC config is using a /26 network. This splits the network address into four equal sizes that can be used for workshops. The below table describes the setup of the network in the four
 partitions. It provides essential information for the workshop with respect to the IP addresses and the services running at that IP address.
 
-| Name                  | Foundation VM | Foundation VM IP | Cluster Name | Cluster IP   | Cluster Username | Cluster Password | Primary Netwok | Primary VLAN | Primary GW  | Secondary Subnet | Secondary IP Range | Secondary VLAN | Secondary GW  | IPMI Username | IPMI Password | DNS          | NTP            |
-| --------------------- | ------------- | ---------------- | ------------ | ------------ | ---------------- | ---------------- | -------------- | ------------ | ----------- | ---------------- | ------------------ | -------------- | ------------- | ------------- | ------------- | ------------ | -------------- |
-| Pern Ren              | FOVM_001      | 10.38.15.211     | PHX-POC102   | 10.42.102.37 | admin            | ntnx/4DSO        | 10.42.102.0/25 | 0            | 10.42.102.1 | 10.42.102.128/25 | 10.42.102.132-254  | 1021           | 10.42.102.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-| Whai Chun Kit         |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Koh Yong Jun Rick     | FOVM_002      | 10.38.15.212     | PHX-POC183   | 10.38.183.37 | admin            | ntnx/4DSO        | 10.38.183.0/25 | 0            | 10.38.183.1 | 10.38.183.128/25 | 10.38.183.132-254  | 1833           | 10.38.183.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-| Pang Yoke Shim Jerome |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Tay Yi Hang           | FOVM_003      | 10.38.15.213     | PHX-POC295   | 10.38.67.37  | admin            | ntnx/4DSO        | 10.38.67.0/25  | 0            | 10.38.67.1  | 10.38.67.128/25  | 10.38.67.132-254   | 207            | 10.38.67.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-| Yip Mun Kit           |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Ong Wu Loong Eric     | FOVM_004      | 10.38.15.214     | PHX-POC030   | 10.42.30.37  | admin            | ntnx/4DSO        | 10.42.30.0/25  | 0            | 10.42.30.1  | 10.42.30.128/25  | 10.42.30.132-254   | 301            | 10.42.30.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-| Enkizen Wen Ming      |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Yap Kian Wee Clarence | FOVM_005      | 10.38.15.215     | PHX-POC031   | 10.42.31.37  | admin            | ntnx/4DSO        | 10.42.31.0/25  | 0            | 10.42.31.1  | 10.42.31.128/25  | 10.42.31.132-254   | 311            | 10.42.31.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Lim Lui Siang Alex    | FOVM_006      | 10.38.15.216     | PHX-POC061   | 10.42.61.37  | admin            | ntnx/4DSO        | 10.42.61.0/25  | 0            | 10.42.61.1  | 10.42.61.128/25  | 10.42.61.132-254   | 611            | 10.42.61.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Tan Rong Tai Damien   | FOVM_007      | 10.38.15.217     | PHX-POC065   | 10.42.65.37  | admin            | ntnx/4DSO        | 10.42.65.0/25  | 0            | 10.42.65.1  | 10.42.65.128/25  | 10.42.65.132-254   | 651            | 10.42.65.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Chong Loo Tong Andrew | FOVM_008      | 10.38.15.218     | PHX-POC018   | 10.42.18.37  | admin            | ntnx/4DSO        | 10.42.18.0/25  | 0            | 10.42.18.1  | 10.42.18.128/25  | 10.42.18.132-254   | 181            | 10.42.18.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Hu Huini Joey         | FOVM_009      | 10.38.15.219     | PHX-POC020   | 10.42.20.37  | admin            | ntnx/4DSO        | 10.42.20.0/25  | 0            | 10.42.20.1  | 10.42.20.128/25  | 10.42.20.132-254   | 201            | 10.42.20.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
-| Wong Teck Yuan Simon  | FOVM_010      | 10.38.15.220     | PHX-POC029   | 10.42.29.37  | admin            | ntnx/4DSO        | 10.42.29.0/25  | 0            | 10.42.29.1  | 10.42.29.128/25  | 10.42.29.132-254   | 291            | 10.42.29.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.pool.ntp.org |
-|                       |               |                  |              |              |                  |                  |                |              |             |                  |                    |                |               |               |               |              |                |
+|    | Name                 | Cluster Name | IPMI IP      | HOST IP      | CVM IP       | Frame Account     | Frame Account | Frame Account Pwd | Foundation VM | Foundation VM IP | Cluster Name | Cluster Password | Primary Network Name | Primary VLAN  | Primary GW  | Secondary Subnet | Secondary IP Range | Secondary VLAN | Secondary GW  | IPMI Username | IPMI Password | DNS          | NTP            |
+|----|----------------------|--------------|--------------|--------------|--------------|-------------------|---------------|-------------------|---------------|------------------|--------------|------------------|----------------------|---------------|-------------|------------------|--------------------|----------------|---------------|---------------|---------------|--------------|----------------|
+| 1  | Giam Xiong Yao       | PHX-POC263   | 10.38.35.34  | 10.38.35.25  | 10.38.35.29  | PHX-POC263-User01 | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_001      |                  | PHX-POC263-A | ntnx/4DSTA       | 10.38.35.0/25        | 0             | 10.38.35.1  | 10.38.35.128/25  | 10.38.35.132-254   | 47             | 10.38.35.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 2  | Goh Hao Wei          | PHX-POC263   | 10.38.35.35  | 10.38.35.26  | 10.38.35.30  | PHX-POC263-User02 | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_002      |                  | PHX-POC263-B | ntnx/4DSTA       | 10.38.35.0/25        | 0             | 10.38.35.1  | 10.38.35.128/25  | 10.38.35.132-254   | 47             | 10.38.35.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 3  | Lim Xi Yang          | PHX-POC263   | 10.38.35.36  | 10.38.35.27  | 10.38.35.31  | PHX-POC263-User03 | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_003      |                  | PHX-POC263-C | ntnx/4DSTA       | 10.38.35.0/25        | 0             | 10.38.35.1  | 10.38.35.128/25  | 10.38.35.132-254   | 47             | 10.38.35.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 4  | Ong Sheng Jian       | PHX-POC263   | 10.38.35.37  | 10.38.35.28  | 10.38.35.32  | PHX-POC263-User04 | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_004      |                  | PHX-POC263-D | ntnx/4DSTA       | 10.38.35.0/25        | 0             | 10.38.35.1  | 10.38.35.128/25  | 10.38.35.132-254   | 47             | 10.38.35.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 5  | Seah Wei Hong        | PHX-POC204   | 10.38.204.33 | 10.38.204.25 | 10.38.204.29 |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_005      |                  | PHX-POC204-A | ntnx/4DSTA       | 10.38.204.0/25       | 0             | 10.38.204.1 | 10.38.204.128/25 | 10.38.204.132-254  | 2043           | 10.38.204.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 6  | Tay Yi Hsuen         | PHX-POC204   | 10.38.204.34 | 10.38.204.26 | 10.38.204.30 |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_006      |                  | PHX-POC204-B | ntnx/4DSTA       | 10.38.204.0/25       | 0             | 10.38.204.1 | 10.38.204.128/25 | 10.38.204.132-254  | 2043           | 10.38.204.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 7  | Tanya Elizabeth Khoo | PHX-POC204   | 10.38.204.35 | 10.38.204.27 | 10.38.204.31 |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_007      |                  | PHX-POC204-C | ntnx/4DSTA       | 10.38.204.0/25       | 0             | 10.38.204.1 | 10.38.204.128/25 | 10.38.204.132-254  | 2043           | 10.38.204.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 8  | Soh Boon Yen         | PHX-POC204   | 10.38.204.36 | 10.38.204.28 | 10.38.204.32 |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_008      |                  | PHX-POC204-D | ntnx/4DSTA       | 10.38.204.0/25       | 0             | 10.38.204.1 | 10.38.204.128/25 | 10.38.204.132-254  | 2043           | 10.38.204.129 | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 9  | Lim Jun Wei          | PHX-POC002   | 10.42.2.33   | 10.42.2.25   | 10.42.2.29   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_009      |                  | PHX-POC002-A | ntnx/4DSTA       | 10.42.2.0/25         | 0             | 10.42.2.1   | 10.42.2.128/25   | 10.42.2.132-254    | 21             | 10.42.2.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 10 | Kenneth Neoh Kim How | PHX-POC002   | 10.42.2.34   | 10.42.2.26   | 10.42.2.30   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_010      |                  | PHX-POC002-B | ntnx/4DSTA       | 10.42.2.0/25         | 0             | 10.42.2.1   | 10.42.2.128/25   | 10.42.2.132-254    | 21             | 10.42.2.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 11 | Yee Jun Wei          | PHX-POC002   | 10.42.2.35   | 10.42.2.27   | 10.42.2.31   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_011      |                  | PHX-POC002-C | ntnx/4DSTA       | 10.42.2.0/25         | 0             | 10.42.2.1   | 10.42.2.128/25   | 10.42.2.132-254    | 21             | 10.42.2.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 12 | Yang Kai Ze          | PHX-POC002   | 10.42.2.36   | 10.42.2.28   | 10.42.2.32   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_012      |                  | PHX-POC002-D | ntnx/4DSTA       | 10.42.2.0/25         | 0             | 10.42.2.1   | 10.42.2.128/25   | 10.42.2.132-254    | 21             | 10.42.2.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 13 | Lim Ka Tiong         | PHX-POC007   | 10.42.7.33   | 10.42.7.25   | 10.42.7.29   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_013      |                  | PHX-POC007-A | ntnx/4DSTA       | 10.42.7.0/25         | 0             | 10.42.7.1   | 10.42.7.128/25   | 10.42.7.132-254    | 71             | 10.42.7.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 14 | Wong Wei En, Matthew | PHX-POC007   | 10.42.7.34   | 10.42.7.26   | 10.42.7.30   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_014      |                  | PHX-POC007-B | ntnx/4DSTA       | 10.42.7.0/25         | 0             | 10.42.7.1   | 10.42.7.128/25   | 10.42.7.132-254    | 71             | 10.42.7.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 15 | Wong Chin Hao        | PHX-POC007   | 10.42.7.35   | 10.42.7.27   | 10.42.7.31   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_015      |                  | PHX-POC007-C | ntnx/4DSTA       | 10.42.7.0/25         | 0             | 10.42.7.1   | 10.42.7.128/25   | 10.42.7.132-254    | 71             | 10.42.7.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 16 |                      | PHX-POC007   | 10.42.7.36   | 10.42.7.28   | 10.42.7.32   |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_016      |                  | PHX-POC007-D | ntnx/4DSTA       | 10.42.7.0/25         | 0             | 10.42.7.1   | 10.42.7.128/25   | 10.42.7.132-254    | 71             | 10.42.7.129   | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 17 |                      | PHX-POC062   | 10.42.62.33  | 10.42.62.25  | 10.42.62.29  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_017      |                  | PHX-POC062-A | ntnx/4DSTA       | 10.42.62.0/25        | 0             | 10.42.62.1  | 10.42.62.128/25  | 10.42.62.132-254   | 621            | 10.42.62.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 18 |                      | PHX-POC062   | 10.42.62.34  | 10.42.62.26  | 10.42.62.30  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_018      |                  | PHX-POC062-B | ntnx/4DSTA       | 10.42.62.0/25        | 0             | 10.42.62.1  | 10.42.62.0/25    | 10.42.62.132-254   | 621            | 10.42.62.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 19 |                      | PHX-POC062   | 10.42.62.35  | 10.42.62.27  | 10.42.62.31  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_019      |                  | PHX-POC062-C | ntnx/4DSTA       | 10.42.62.0/25        | 0             | 10.42.62.1  | 10.42.62.0/25    | 10.42.62.132-254   | 621            | 10.42.62.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 20 |                      | PHX-POC062   | 10.42.62.36  | 10.42.62.28  | 10.42.62.32  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_020      |                  | PHX-POC062-D | ntnx/4DSTA       | 10.42.62.0/25        | 0             | 10.42.62.1  | 10.42.62.0/25    | 10.42.62.132-254   | 621            | 10.42.62.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 21 |                      | PHX-POC044   | 10.42.44.33  | 10.42.44.25  | 10.42.44.29  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_021      |                  | PHX-POC044-A | ntnx/4DSTA       | 10.42.44.0/25        | 0             | 10.42.44.1  | 10.42.44.128/25  | 10.42.44.132-254   | 441            | 10.42.44.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 22 |                      | PHX-POC044   | 10.42.44.34  | 10.42.44.26  | 10.42.44.30  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_022      |                  | PHX-POC044-B | ntnx/4DSTA       | 10.42.44.0/25        | 0             | 10.42.44.1  | 10.42.44.128/25  | 10.42.44.132-254   | 441            | 10.42.44.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 23 |                      | PHX-POC044   | 10.42.44.35  | 10.42.44.27  | 10.42.44.31  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_023      |                  | PHX-POC044-C | ntnx/4DSTA       | 10.42.44.0/25        | 0             | 10.42.44.1  | 10.42.44.128/25  | 10.42.44.132-254   | 441            | 10.42.44.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+| 24 |                      | PHX-POC044   | 10.42.44.36  | 10.42.44.28  | 10.42.44.32  |                   | ntnx/4DSTA    | ntnx/4DSTA        | FOVM_024      |                  | PHX-POC044-D | ntnx/4DSTA       | 10.42.44.0/25        | 0             | 10.42.44.1  | 10.42.44.128/25  | 10.42.44.132-254   | 441            | 10.42.44.129  | ADMIN         | ADMIN         | 10.42.194.10 | 0.POOL.NTP.ORG |
+
 
 ### Credentials
 
@@ -149,9 +154,9 @@ Each cluster has a dedicated domain controller VM, **DC**, responsible for provi
 
 | Group            | Username(s)              | Password |
 |-----------------| ------------------------- |------------|
-| Administrators    | Administrator             | nutanix/4u | 
-| SSP Admins        | adminuser01-adminuser25   | nutanix/4u | 
-| SSP Developers    | devuser01-devuser25       | nutanix/4u | 
+| Administrators    | Administrator             | nutanix/4u |
+| SSP Admins        | adminuser01-adminuser25   | nutanix/4u |
+| SSP Developers    | devuser01-devuser25       | nutanix/4u |
 | SSP Consumers     | consumer01-consumer25     | nutanix/4u |
 | SSP Operators     | operator01-operator25     | nutanix/4u |
 | SSP Custom        | custom01-custom25         | nutanix/4u |
@@ -164,14 +169,14 @@ The Nutanix Hosted POC environment can be accessed a number of different ways:
 
 ### Lab Access User Credentials
 
-PHX Based Clusters: 
+PHX Based Clusters:
 
-- **Username:** PHX-POCxxx-User01 (up to PHX-POCxxx-User20), 
+- **Username:** PHX-POCxxx-User01 (up to PHX-POCxxx-User20),
 - **Password:** *Provided by Instructor*
 
-RTP Based Clusters: 
+RTP Based Clusters:
 
-- **Username:** RTP-POCxxx-User01 (up to RTP-POCxxx-User20), 
+- **Username:** RTP-POCxxx-User01 (up to RTP-POCxxx-User20),
 - **Password:** *Provided by Instructor*
 
 
@@ -185,4 +190,3 @@ RTP Based Clusters:
 !!! note
 
     - ```https://nutanixinc-my.sharepoint.com/:x:/g/personal/rahuman_pichai_nutanix_com/EaNgeE7S6H9Gj7BAoVzvuVEB5NnA5oT2tC_-WM2yn1L1TA?e=NJEROt
-
