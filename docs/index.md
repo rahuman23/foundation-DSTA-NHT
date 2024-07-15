@@ -68,35 +68,36 @@ Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. 
 
 As we are able to provide single node clusters in the HPOC environment, we need to describe each sort of cluster separately. The clusters are setup and configured differently.
 
-#### Three/Four node HPOC clusters
+<!-- #### Three/Four node HPOC clusters
 
-####Single node Hosted POC clusters follow a standard naming convention:
+Single node Hosted POC clusters follow a standard naming convention:
 
-####- **Cluster Name** - POC*XYZ*
-####- **Subnet** - 10.**42**.*XYZ*.0
-####- **Cluster IP** - 10.**42**.*XYZ*.*XYZ*
+- **Cluster Name** - POC*XYZ*
+- **Subnet** - 10.**42**.*XYZ*.0
+- **Cluster IP** - 10.**42**.*XYZ*.*XYZ* -->
 
-####For example:
+<!-- For example: -->
 
-####- **Cluster Name** - POC055*Node Character*
-####- **Subnet** - 10.42.55.0
-####
+<!-- ####- **Cluster Name** - POC055*Node Character* -->
+<!-- ####- **Subnet** - 10.42.55.0 -->
+
+
 Throughout the Workshop there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
-####| IP Address     |   Description |
-####| 10.42.*XYZ*.*XX* |  Nutanix Cluster Virtual IP   |
-####| 10.42.*XYZ*.*XX*  |  **DC** VM IP, NTNXLAB.local Domain Controller   |
+| IP Address     |   Description |
+| 10.42.*XYZ*.*XX* |  Nutanix Cluster Virtual IP   |
+| 10.42.*XYZ*.*XX*  |  **DC** VM IP, NTNXLAB.local Domain Controller   |
 
 
-####Each cluster is configured with 2 VLANs which can be used for VMs:
+Each cluster is configured with 2 VLANs which can be used for VMs:
 
 
-####|Network Name     | Address             | VLAN    | DHCP Scope|
-####|-----------------| ------------------- |-------- | -----------|
-####|Primary          | 10.42.*XYZ*.1/25    | 0       | 10.42.*XYZ*.50-10.42.*XYZ*.124|
-####|Secondary        | 10.42.*XYZ*.129/25  | *XYZ1*  | 10.42.*XYZ*.132-10.42.*XYZ*.253|
+|Network Name     | Address             | VLAN    | DHCP Scope|
+|-----------------| ------------------- |-------- | -----------|
+|Primary          | 10.42.*XYZ*.1/25    | 0       | 10.42.*XYZ*.50-10.42.*XYZ*.124|
+|Secondary        | 10.42.*XYZ*.129/25  | *XYZ1*  | 10.42.*XYZ*.132-10.42.*XYZ*.253|
 
 
-#### 1 Node Cluster HPOC
+ 1 Node Cluster HPOC
 
 For some workshops we are using Single Node Clusters (SNC). The reason for this is to allow more people to have a dedicated cluster but still have enough free clusters for the bigger workshops including those for
 customers.
@@ -179,6 +180,4 @@ RTP Based Clusters:
 
 ## Access to lab info
 
-!!! note
-
-    - ```https://nutanixinc-my.sharepoint.com/:x:/g/personal/rahuman_pichai_nutanix_com/EQnLHJ7E_VVCuUsD5kNYabABn1uE0fURhlKYwD2_9pgZ8g?e=AMk948
+Find information about labs [here](https://nutanixinc-my.sharepoint.com/:x:/g/personal/rahuman_pichai_nutanix_com/EQnLHJ7E_VVCuUsD5kNYabABn1uE0fURhlKYwD2_9pgZ8g?e=AMk948)
