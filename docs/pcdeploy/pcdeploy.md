@@ -72,6 +72,7 @@ in your browser and log in with the following credentials:
     -  **VM Name** - PC
     -  **Select A Container** - SelfServiceContainer
     -  **VM Sizing** - SMALL - (UP TO 2500 VMs)
+    -  NOTE: Please do not select Extra Small, this config will not allow you to enable Network Controller.
 
     ![](images/4.png)
 
@@ -147,7 +148,7 @@ You have successully registered Prism Element to be managed your Prism Central.
 
     ![](images/14.jpeg)
 
-8.  You will see the service that has been enabled in the and completed in the cluster. 
+8.  You will see the service that has been enabled in the and completed in the cluster.
 
     ![](images/15.jpeg)
 
