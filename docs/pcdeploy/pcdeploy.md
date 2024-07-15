@@ -142,15 +142,20 @@ You have successully registered Prism Element to be managed your Prism Central.
 
     ![](images/12.jpeg)
 
-7.  This will enable the necessary services and complete the proccess.
+7.  Login to the Prism Central, again.
+
+8. Click on Infrastructure in the App Switcher
+
+9. Scroll down on the side bar to go to Prism Central Settings
+
+10. Click on "Network Controller"
+
+11. Click on checkbox to enable Network Controller for VLAN Management as per screenshot below:
 
     ![](images/13.jpeg)
 
     ![](images/14.jpeg)
 
-8.  You will see the service that has been enabled in the and completed in the cluster.
+12.  You will see the service that has been enabled in the and completed in the cluster.
 
     ![](images/15.jpeg)
-
-!!!note
-       Once the Prism Element registration is complete, several management features on Prism Element will be **Read-Only** mode but fully available in Prism Central.
